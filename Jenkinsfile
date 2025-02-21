@@ -23,7 +23,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    sh 'terraform init -backend-config="key=infrastructure/${env.BRANCH_NAME}/terraform.tfstate" -no-color'
+                    sh "terraform init -backend-config=key=infrastructure/${env.BRANCH_NAME}/terraform.tfstate -no-color"
                 }
             }
         }
@@ -43,7 +43,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    sh 'terraform plan -var-file="environments/${env.BRANCH_NAME}.tfvars" -out=tfplan -no-color'
+                    sh "terraform plan -var-file=environments/${env.BRANCH_NAME}.tfvars -out=tfplan -no-color"
                 }
             }
         }
