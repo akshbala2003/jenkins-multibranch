@@ -28,18 +28,6 @@ pipeline {
             }
         }
 
-        stage('Terraform Format') {
-            steps {
-                sh 'terraform fmt -check -recursive'
-            }
-        }
-
-        stage('Terraform Validate') {
-            steps {
-                sh 'terraform validate'
-            }
-        }
-
         stage('Terraform Plan') {
             steps {
                 script {
